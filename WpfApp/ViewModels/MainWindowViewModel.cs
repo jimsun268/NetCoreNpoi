@@ -1,16 +1,11 @@
 ﻿using InfrastructureLibary.Constants;
+using InfrastructureLibary.ETW;
 using Prism.Commands;
 using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WpfApp.Views.FlyoutsRegion;
-using InfrastructureLibary.ETW;
 
 namespace WpfApp.ViewModels
 {
@@ -18,18 +13,19 @@ namespace WpfApp.ViewModels
     {
         public MainWindowViewModel(IModuleManager moduleManager, IRegionManager regionManager, IDialogService dialogService,IETWService eTWService)
         {
-            eTWService.ProcessingStart(nameof(MainWindowViewModel));
             _moduleManager = moduleManager;
             _regionManager = regionManager;
             _dialogService = dialogService;
-            _moduleManager.LoadModuleCompleted += ModuleManager_LoadModuleCompleted;
-            eTWService.ProcessingFinish(nameof(MainWindowViewModel));
+            _etwService = eTWService;            
+            _moduleManager.LoadModuleCompleted += ModuleManager_LoadModuleCompleted;            
         }
 
         #region Fields
         private readonly IModuleManager _moduleManager;
-        private readonly IDialogService _dialogService;
         private readonly IRegionManager _regionManager;
+        private readonly IDialogService _dialogService;
+        private readonly IETWService _etwService;
+        
         #endregion
 
         #region Properties
@@ -45,21 +41,21 @@ namespace WpfApp.ViewModels
         #endregion
 
         #region Excutes
-        private void ModuleManager_LoadModuleCompleted(object sender, LoadModuleCompletedEventArgs e)
-        {
-
-        }
         private void ExecuteLoadingCommand()
         {
-
             _regionManager.RegisterViewWithRegion(RegionNames.LeftWindowRegion, typeof(LeftWindowRegion));
             _regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(MainFlout));
             _regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(EditToolFlout));
 
             IRegion region = _regionManager.Regions[RegionNames.MainShowRegion];
-            region.RequestNavigate("MainShow", NavigationCompelted);
+            region.RequestNavigate(RegionNames.MainShowRegion, NavigationCompelted);
 
         }
+        private void ModuleManager_LoadModuleCompleted(object sender, LoadModuleCompletedEventArgs e)
+        {
+
+        }
+        
         private void NavigationCompelted(NavigationResult obj)
         {
 

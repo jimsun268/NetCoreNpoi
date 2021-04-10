@@ -23,16 +23,13 @@
     </i:Interaction.Triggers>
     <metro:MetroWindow.Flyouts>
         <metro:FlyoutsControl prism:RegionManager.RegionName="{x:Static region:RegionNames.FlyoutRegion}" />
-    </metro:MetroWindow.Flyouts>
-    <metro:MetroWindow.RightWindowCommands>
-        <metro:WindowCommands prism:RegionManager.RegionName="{x:Static region:RegionNames.RightWindowRegion}" />
-    </metro:MetroWindow.RightWindowCommands>
+    </metro:MetroWindow.Flyouts>    
     <metro:MetroWindow.LeftWindowCommands>
         <metro:WindowCommands prism:RegionManager.RegionName="{x:Static region:RegionNames.LeftWindowRegion}"/>
     </metro:MetroWindow.LeftWindowCommands>
     <metro:MetroContentControl>
         <Grid Height="650"  >
-            <ContentControl x:Name="LandControlRegion"  prism:RegionManager.RegionName="{x:Static region:RegionNames.MainShowRegion}" Margin="10,5,10,5" Grid.Column="1" />
+            <ContentControl x:Name="MainRegion"  prism:RegionManager.RegionName="{x:Static region:RegionNames.MainShowRegion}" Margin="10,5,10,5" Grid.Column="1" />
         </Grid>
     </metro:MetroContentControl>
 </metro:MetroWindow>

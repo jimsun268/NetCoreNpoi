@@ -20,7 +20,7 @@ namespace WpfApp.ViewModels.FlyoutsRegion
 
         private readonly IRegionManager _regionManager;
         private IApplicationCommands _applicationCommands;
-
+        
 
 
         #endregion
