@@ -41,7 +41,7 @@ namespace WpfApp
 
             //注册全局命令
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
-            containerRegistry.RegisterSingleton<IEditCommands, EditCommands>();
+            containerRegistry.RegisterSingleton<IEditCommands, EditCommands>();            
             containerRegistry.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());
 
             
