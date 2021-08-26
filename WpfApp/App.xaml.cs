@@ -8,6 +8,12 @@ using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 using Prism.Unity;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Data;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using WpfApp.HelpClass;
@@ -35,7 +41,7 @@ namespace WpfApp
 
             //注册全局命令
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
-            containerRegistry.RegisterSingleton<IEditCommands, EditCommands>();            
+            containerRegistry.RegisterSingleton<IEditCommands, EditCommands>();
             containerRegistry.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());
 
             

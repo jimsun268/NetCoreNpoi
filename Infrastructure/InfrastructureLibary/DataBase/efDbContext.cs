@@ -1,5 +1,10 @@
 ﻿using InfrastructureLibary.Models;
 using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace InfrastructureLibary.DataBase
 {
@@ -18,7 +23,7 @@ namespace InfrastructureLibary.DataBase
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
             options.UseSqlite("Data Source=blogging.db");
-
+            
         }
     }
 }

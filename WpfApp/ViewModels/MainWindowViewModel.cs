@@ -4,6 +4,11 @@ using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using WpfApp.Views.FlyoutsRegion;
 using InfrastructureLibary.ETW;
 
@@ -50,6 +55,7 @@ namespace WpfApp.ViewModels
             _regionManager.RegisterViewWithRegion(RegionNames.LeftWindowRegion, typeof(LeftWindowRegion));
             _regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(MainFlout));
             _regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(EditToolFlout));
+
             IRegion region = _regionManager.Regions[RegionNames.MainShowRegion];
             region.RequestNavigate("MainShow", NavigationCompelted);
 
