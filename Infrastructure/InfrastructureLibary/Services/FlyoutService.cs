@@ -26,8 +26,6 @@ namespace InfrastructureLibary.Services
             _regionManager = regionManager;
             _applicationCommands = applicationCommands;
 
-            
-
             this.ShowFlyoutCommand = new DelegateCommand<string>(ShowFlyout);
             this.NavigateRegionCommand = new DelegateCommand<string>(NavigateRegion);
             //注册子命令给全局复合命令
@@ -57,10 +55,5 @@ namespace InfrastructureLibary.Services
                 }
             }
         }
-
-
-        
-
-        
     }
 }

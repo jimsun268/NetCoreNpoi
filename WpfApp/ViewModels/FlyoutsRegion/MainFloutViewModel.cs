@@ -13,7 +13,6 @@ namespace WpfApp.ViewModels.FlyoutsRegion
             this.ApplicationCommands = applicationCommands;
             _regionManager = regionManager;
             etwcommands.ProcessErro(nameof(MainFloutViewModel), "sfs");
-            
         }
 
         #region Fields
