@@ -1,5 +1,4 @@
 ﻿using Prism.Commands;
-using System;
 
 namespace InfrastructureLibary.Commands
 {
@@ -12,7 +11,6 @@ namespace InfrastructureLibary.Commands
         }
 
         public CompositeCommand _navigateCommand = new CompositeCommand();
-
         public CompositeCommand NavigateCommand
         {
             get { return _navigateCommand; }

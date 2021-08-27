@@ -1,11 +1,4 @@
-﻿using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
+﻿using System.Diagnostics.Tracing;
 
 namespace InfrastructureLibary.ETW
 {
@@ -24,7 +17,6 @@ namespace InfrastructureLibary.ETW
             Events.Log.NullString("This won't be logged");
             consoleListener.Dispose();
         }
-
         public void ProcessErro(string pName, string erroMessage)
         {
             var fileListener = new FileListener(
@@ -52,7 +44,6 @@ namespace InfrastructureLibary.ETW
 
             fileListener.Dispose();
         }
-
         public void ProcessingFinish(string pName)
         {
             var fileListener = new FileListener(
@@ -76,7 +67,6 @@ namespace InfrastructureLibary.ETW
             consoleListener.Dispose();
             fileListener.Dispose();
         }
-
         public void ProcessingStart(string pName)
         {
             var fileListener = new FileListener(
