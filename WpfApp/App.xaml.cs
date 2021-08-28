@@ -4,6 +4,7 @@ using InfrastructureLibary.CustomerRegionAdapters;
 using InfrastructureLibary.ETW;
 using InfrastructureLibary.IServices;
 using InfrastructureLibary.Services;
+using NpoiLibary;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -12,6 +13,7 @@ using System.Windows;
 using System.Windows.Controls.Primitives;
 using WpfApp.ViewModels.Dialogs;
 using WpfApp.Views.Dialogs;
+using WpfApp.Views.Windows;
 
 namespace WpfApp
 {
@@ -29,6 +31,7 @@ namespace WpfApp
         {
             //注册服务
             containerRegistry.Register<IETWService,ETWService>();
+            
             //containerRegistry.Register<IContractService, ContractService>();
 
 
@@ -40,7 +43,7 @@ namespace WpfApp
             
 
             //注册导航
-            //containerRegistry.RegisterForNavigation<MainShow>();
+            containerRegistry.RegisterForNavigation<FirstPapge>();
 
 
             //注册对话框

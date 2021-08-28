@@ -6,6 +6,7 @@ using Prism.Mvvm;
 using Prism.Regions;
 using Prism.Services.Dialogs;
 using WpfApp.Views.FlyoutsRegion;
+using WpfApp.Views.Windows;
 
 namespace WpfApp.ViewModels
 {
@@ -46,9 +47,9 @@ namespace WpfApp.ViewModels
             _regionManager.RegisterViewWithRegion(RegionNames.LeftWindowRegion, typeof(LeftWindowRegion));
             _regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(MainFlout));
             _regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(EditToolFlout));
-
+            
             IRegion region = _regionManager.Regions[RegionNames.MainShowRegion];
-            region.RequestNavigate(RegionNames.MainShowRegion, NavigationCompelted);
+            region.RequestNavigate("FirstPapge", NavigationCompelted);
 
         }
         private void ModuleManager_LoadModuleCompleted(object sender, LoadModuleCompletedEventArgs e)
