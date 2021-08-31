@@ -11,6 +11,6 @@
              d:DesignHeight="450" d:DesignWidth="800" >
    
     <Grid>
-        <Button Content="Hello" Width="300" Height="250"/>
+        <Button Command="{Binding ButtonCommand}" CommandParameter="1" Content="Hello" Width="300" Height="250"/>
     </Grid>
 </UserControl>

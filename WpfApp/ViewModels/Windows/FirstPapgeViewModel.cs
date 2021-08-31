@@ -1,13 +1,11 @@
-﻿using InfrastructureLibary.Commands;
+﻿using InfrastructureLibary.Constants;
 using InfrastructureLibary.ETW;
-using NpoiLibary;
+using Prism.Commands;
+using Prism.Modularity;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
+using Prism.Services.Dialogs;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WpfApp.ViewModels.Windows
 {
@@ -15,12 +13,56 @@ namespace WpfApp.ViewModels.Windows
     {
 
 
-        public FirstPapgeViewModel (IApplicationCommands applicationCommands, IRegionManager regionManager, IETWService etwcommands)
+        public FirstPapgeViewModel (IModuleManager moduleManager, IRegionManager regionManager, IDialogService dialogService, IETWService eTWService)
         {
+            _moduleManager = moduleManager;
+            _regionManager = regionManager;
+            _dialogService = dialogService;
+            _etwService = eTWService;
+        }
+
+
+        #region Fields
+        private readonly IModuleManager _moduleManager;
+        private readonly IRegionManager _regionManager;
+        private readonly IDialogService _dialogService;
+        private readonly IETWService _etwService;
+        private  IRegion _navigationRegion;
+        #endregion
+
+        #region Properties
+        public bool KeepAlive => true;
+        public IRegion NavigationRegion => _navigationRegion ??= _regionManager.Regions[RegionNames.MainShowRegion];
+        #endregion
+
+        #region Commands
+
+        private DelegateCommand _loadingCommand;
+        public DelegateCommand LoadingCommand =>
+               _loadingCommand ??= new DelegateCommand(ExecuteLoadingCommand);
+
+        private DelegateCommand<string> _buttonCommand;
+        public DelegateCommand<string> ButtonCommand =>
+              _buttonCommand ??= new DelegateCommand<string>(ExecuteButton);
+        #endregion
+
+        #region Excutes
+        private void ExecuteLoadingCommand()
+        {
+            
 
         }
-        public bool KeepAlive => true;
 
+        private void ExecuteButton(string st)
+        {
+            
+            
+            var t1 = _moduleManager.Modules.ToArray();
+            var t2= NavigationRegion.Views.ToArray();
+            NavigationRegion.RequestNavigate(ModelExcelFontColor.RegionNames.MainWindow );
+
+            _dialogService.ShowDialog("SuccessDialog", new DialogParameters($"message={"MainShowViewModel导航成功！"}"), null);
+        }
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
             return true;
@@ -28,12 +70,17 @@ namespace WpfApp.ViewModels.Windows
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-           
+
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            
+
         }
+
+        #endregion
+
+
+
     }
 }

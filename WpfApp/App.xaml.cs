@@ -4,7 +4,6 @@ using InfrastructureLibary.CustomerRegionAdapters;
 using InfrastructureLibary.ETW;
 using InfrastructureLibary.IServices;
 using InfrastructureLibary.Services;
-using NpoiLibary;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -30,30 +29,22 @@ namespace WpfApp
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             //注册服务
-            containerRegistry.Register<IETWService,ETWService>();
-            
+            containerRegistry.Register<IETWService,ETWService>();            
             //containerRegistry.Register<IContractService, ContractService>();
-
 
             //注册全局命令
             containerRegistry.RegisterSingleton<IApplicationCommands, ApplicationCommands>();
             containerRegistry.RegisterSingleton<IEditCommands, EditCommands>();
-            containerRegistry.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());
-
-            
+            containerRegistry.RegisterInstance<IFlyoutService>(Container.Resolve<FlyoutService>());            
 
             //注册导航
             containerRegistry.RegisterForNavigation<FirstPapge>();
-
 
             //注册对话框
             containerRegistry.RegisterDialog<AlertDialog, AlertDialogViewModel>();
             containerRegistry.RegisterDialog<SuccessDialog, SuccessDialogViewModel>();
             containerRegistry.RegisterDialog<WarningDialog, WarningDialogViewModel>();
-            containerRegistry.RegisterDialogWindow<DialogWindow>();
-
-
-            //ServiceLocator.SetLocatorProvider(() => new UnityServiceLocator(this.Container.GetContainer()));
+            containerRegistry.RegisterDialogWindow<DialogWindow>();           
         }
         protected override void ConfigureRegionAdapterMappings(RegionAdapterMappings regionAdapterMappings)
         {
@@ -62,7 +53,9 @@ namespace WpfApp
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-            moduleCatalog.AddModule<NpoiLibary.NpoiLibaryModule>();
+           
+            moduleCatalog.AddModule<ModelExcelExport.ModelExcelExport>();
+            moduleCatalog.AddModule<ModelExcelFontColor.ModelExcelFontColor>();
         }
         protected override IModuleCatalog CreateModuleCatalog()
         {
