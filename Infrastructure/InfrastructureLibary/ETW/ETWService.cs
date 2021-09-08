@@ -25,7 +25,7 @@ namespace InfrastructureLibary.ETW
                     new SourceConfig(){
                         Name = "NetCoreNpoi",
                         Level = EventLevel.Informational,
-                        Keywords = Events.Keywords.PrimeOutput}
+                        Keywords = Events.Keywords.General}
                },
                "PrimeOutput.txt");
 
@@ -35,7 +35,7 @@ namespace InfrastructureLibary.ETW
                     new SourceConfig(){
                         Name = "NetCoreNpoi",
                         Level = EventLevel.Informational,
-                        Keywords = Events.Keywords.PrimeOutput}
+                        Keywords = Events.Keywords.General}
                 });
             Events.Log.ProcessInformational(pName, pMessage);
             consoleListener.Dispose();

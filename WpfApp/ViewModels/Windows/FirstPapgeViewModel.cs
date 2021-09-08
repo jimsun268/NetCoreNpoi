@@ -12,7 +12,6 @@ namespace WpfApp.ViewModels.Windows
     public class FirstPapgeViewModel : BindableBase, INavigationAware, IRegionMemberLifetime
     {
 
-
         public FirstPapgeViewModel (IModuleManager moduleManager, IRegionManager regionManager, IDialogService dialogService, IETWService eTWService)
         {
             _moduleManager = moduleManager;
@@ -55,14 +54,10 @@ namespace WpfApp.ViewModels.Windows
         }
 
         private void ExecuteButton(string st)
-        {
-            
-            
+        {            
             var t1 = _moduleManager.Modules.ToArray();
             var t2= NavigationRegion.Views.ToArray();
-            NavigationRegion.RequestNavigate(ModelExcelFontColor.RegionNames.MainWindow );
-
-            _dialogService.ShowDialog("SuccessDialog", new DialogParameters($"message={"MainShowViewModel导航成功！"}"), null);
+            NavigationRegion.RequestNavigate(ModelExcelExport.RegionNames.MainWindow );           
         }
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {
@@ -71,12 +66,12 @@ namespace WpfApp.ViewModels.Windows
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-
+            _etwService.ProcessInformational(nameof(FirstPapgeViewModel), "OnNavigatedFrom");
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-
+            _etwService.ProcessInformational(nameof(FirstPapgeViewModel), "OnNavigatedTo");
         }
 
         #endregion

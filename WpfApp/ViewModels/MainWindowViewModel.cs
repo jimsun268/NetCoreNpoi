@@ -55,9 +55,9 @@ namespace WpfApp.ViewModels
         }
         private void ModuleManager_LoadModuleCompleted(object sender, LoadModuleCompletedEventArgs e)
         {
-
-        }
-        
+            string name = e.ModuleInfo.ModuleName;
+            _etwService.ProcessInformational(nameof(MainWindowViewModel),"{name} loaded!");
+        }        
         private void NavigationCompelted(NavigationResult obj)
         {
 

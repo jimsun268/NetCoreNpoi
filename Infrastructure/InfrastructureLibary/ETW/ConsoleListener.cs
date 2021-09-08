@@ -18,6 +18,9 @@ namespace InfrastructureLibary.ETW
             string outputString;
             switch (eventData.EventId)
             {
+                case Events.ProcessInformationalId:
+                    outputString = string.Format("记录 ({0}): {1}", eventData.EventId, (string)eventData.Payload[0], (string)eventData.Payload[1]);
+                    break;
                 case Events.ProcessingStartId:
                     outputString = string.Format("开始 ({0}): {1}", eventData.EventId, (string)eventData.Payload[0]);
                     break;

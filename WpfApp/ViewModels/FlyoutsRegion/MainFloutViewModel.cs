@@ -8,11 +8,9 @@ namespace WpfApp.ViewModels.FlyoutsRegion
     public class MainFloutViewModel : BindableBase
     {
         public MainFloutViewModel(IApplicationCommands applicationCommands, IRegionManager regionManager,IETWService etwcommands)
-        {
-            etwcommands.ProcessingStart(nameof(MainFloutViewModel));
+        {            
             this.ApplicationCommands = applicationCommands;
-            _regionManager = regionManager;
-            etwcommands.ProcessErro(nameof(MainFloutViewModel), "sfs");
+            _regionManager = regionManager;            
         }
 
         #region Fields
