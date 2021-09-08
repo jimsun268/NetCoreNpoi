@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Diagnostics.Tracing;
+﻿using System.Diagnostics.Tracing;
 
 namespace InfrastructureLibary.ETW
 {
@@ -22,6 +17,17 @@ namespace InfrastructureLibary.ETW
         internal const int ProcessingFinishId = 2;
         internal const int ProcessErroId = 3;
         internal const int NullStringId = 4;
+        internal const int ProcessInformationalId = 5;
+
+
+        [Event(ProcessInformationalId, Level = EventLevel.Informational, Keywords = Keywords.General)]
+        public void ProcessInformational(string pName, string pMessage)
+        {
+            if (this.IsEnabled())
+            {
+                this.WriteEvent(ProcessInformationalId, pName, pMessage);
+            }
+        }
 
         [Event(ProcessingStartId, Level = EventLevel.Informational, Keywords = Keywords.General)]
         public void ProcessingStart(string pName)

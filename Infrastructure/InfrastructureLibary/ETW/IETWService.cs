@@ -12,5 +12,6 @@ namespace InfrastructureLibary.ETW
         public void ProcessingFinish(string pName);
         public void ProcessErro(string pName,string erroMessage);
         public void NullString(string pName);
+        public void ProcessInformational(string pName, string pMessage);
     }
 }

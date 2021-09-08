@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InfrastructureLibary.ETW
 {
@@ -17,7 +13,6 @@ namespace InfrastructureLibary.ETW
     abstract class BaseListener : EventListener
     {
         List<SourceConfig> configs = new List<SourceConfig>();
-
         protected BaseListener(IEnumerable<SourceConfig> sources)
         {
             this.configs.AddRange(sources);

@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InfrastructureLibary.ETW
 {
@@ -28,6 +25,9 @@ namespace InfrastructureLibary.ETW
              st =st+ time.ToString("MM月dd日 HH:mm:ss:fff");            
             switch (eventData.EventId)
             {
+                case Events.ProcessInformationalId:
+                    st = st + "  记录  " + (string)eventData.Payload[0] + "\n";
+                    break;
                 case Events.ProcessingStartId:
                     st = st + "  开始  " + (string)eventData.Payload[0]+ "\n";                    
                     break;

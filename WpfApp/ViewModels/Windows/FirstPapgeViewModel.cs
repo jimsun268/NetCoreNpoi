@@ -19,6 +19,7 @@ namespace WpfApp.ViewModels.Windows
             _regionManager = regionManager;
             _dialogService = dialogService;
             _etwService = eTWService;
+            _etwService.ProcessingStart(nameof(FirstPapgeViewModel));
         }
 
 

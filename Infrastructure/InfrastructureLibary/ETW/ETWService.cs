@@ -17,6 +17,30 @@ namespace InfrastructureLibary.ETW
             Events.Log.NullString("This won't be logged");
             consoleListener.Dispose();
         }
+        public void ProcessInformational(string pName, string pMessage)
+        {
+            var fileListener = new FileListener(
+               new SourceConfig[]
+               {
+                    new SourceConfig(){
+                        Name = "NetCoreNpoi",
+                        Level = EventLevel.Informational,
+                        Keywords = Events.Keywords.PrimeOutput}
+               },
+               "PrimeOutput.txt");
+
+            var consoleListener = new ConsoleListener(
+                new SourceConfig[]
+                {
+                    new SourceConfig(){
+                        Name = "NetCoreNpoi",
+                        Level = EventLevel.Informational,
+                        Keywords = Events.Keywords.PrimeOutput}
+                });
+            Events.Log.ProcessInformational(pName, pMessage);
+            consoleListener.Dispose();
+            fileListener.Dispose();
+        }
         public void ProcessErro(string pName, string erroMessage)
         {
             var fileListener = new FileListener(
@@ -39,9 +63,6 @@ namespace InfrastructureLibary.ETW
                 });
             Events.Log.ProcessErro(pName, erroMessage);
             consoleListener.Dispose();
-
-           
-
             fileListener.Dispose();
         }
         public void ProcessingFinish(string pName)

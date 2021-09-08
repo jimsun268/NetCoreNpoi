@@ -17,7 +17,8 @@ namespace WpfApp.ViewModels
             _moduleManager = moduleManager;
             _regionManager = regionManager;
             _dialogService = dialogService;
-            _etwService = eTWService;            
+            _etwService = eTWService;
+            _etwService.ProcessingStart(nameof(MainWindowViewModel));
             _moduleManager.LoadModuleCompleted += ModuleManager_LoadModuleCompleted;            
         }
 
