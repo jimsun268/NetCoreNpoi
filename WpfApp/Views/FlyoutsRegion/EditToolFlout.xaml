@@ -12,12 +12,14 @@
              xmlns:Converters="clr-namespace:InfrastructureLibary.Converters;assembly=InfrastructureLibary"             
               Position="Bottom"  
               Height="60"
-             prism:ViewModelLocator.AutoWireViewModel="True">
+             prism:ViewModelLocator.AutoWireViewModel="True" 
+              >
+    
     <UniformGrid Columns="5" Rows="1">
-        <Button Command="{Binding GoBackCommand}"  Width="50" Height="50" Content="Back"/>
-        <Button Command="{Binding EditCommands.NavigateCommand}" CommandParameter="1" Width="50" Height="50" Content="Save"/>
-        <Button Width="50" Height="50" Content="Del"/>
-        <Button Width="50" Height="50" Content="Add"/>
-        <Button Width="50" Height="50" Content="Excel"/>
+        <Button Command="{Binding EditCommands.Command01}"  Width="50" Height="50" Content="Back"/>
+        <Button Command="{Binding EditCommands.Command02}" CommandParameter="1" Width="50" Height="50" Content="Save"/>
+        <Button Command="{Binding EditCommands.Command03}" Width="50" Height="50" Content="Del"/>
+        <Button Command="{Binding EditCommands.Command04}" Width="50" Height="50" Content="Add"/>
+        <Button Command="{Binding EditCommands.Command05}" Width="50" Height="50" Content="Excel"/>
     </UniformGrid>
 </metro:Flyout>

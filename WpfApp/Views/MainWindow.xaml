@@ -15,12 +15,16 @@
         Height="700"  
         Width="800" 
         WindowStartupLocation="CenterScreen"
-                   TitleAlignment="Center">
+                   TitleAlignment="Center" >
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadingCommand}"/>
         </i:EventTrigger>
+        <i:EventTrigger EventName="Unloaded">
+            <i:InvokeCommandAction Command="{Binding UnLoadingCommand}"/>
+        </i:EventTrigger>
     </i:Interaction.Triggers>
+
     <metro:MetroWindow.Flyouts>
         <metro:FlyoutsControl prism:RegionManager.RegionName="{x:Static region:RegionNames.FlyoutRegion}" />
     </metro:MetroWindow.Flyouts>    

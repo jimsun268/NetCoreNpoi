@@ -30,6 +30,6 @@ namespace WpfApp.Views.FlyoutsRegion
         public string FlyoutName
         {
             get { return FlyoutNames.EditToolFlout; }
-        }
+        }        
     }
 }

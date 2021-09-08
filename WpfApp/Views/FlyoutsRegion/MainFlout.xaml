@@ -14,7 +14,9 @@
               Height="100"
              prism:ViewModelLocator.AutoWireViewModel="True" >
     <UniformGrid Columns="4">
-        <Button Command="{Binding ApplicationCommands.NavigateCommand}" CommandParameter="{x:Static const:RegionNames.MainShowRegion}" Width="90" Height="90"/>
-
+        <Button Command="{Binding ButtonCommand}" CommandParameter="1" Width="90" Height="90"/>
+        <Button Command="{Binding ButtonCommand}" CommandParameter="2" Width="90" Height="90" Margin="10,0,0,0"/>
+        <Button Command="{Binding ButtonCommand}" CommandParameter="3" Width="90" Height="90" Margin="10,0,0,0"/>
+        <Button Command="{Binding ButtonCommand}" CommandParameter="4" Width="90" Height="90" Margin="10,0,0,0"/>
     </UniformGrid>
 </metro:Flyout>
