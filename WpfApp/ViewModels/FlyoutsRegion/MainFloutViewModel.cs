@@ -1,9 +1,8 @@
-﻿using InfrastructureLibary.Commands;
+﻿using InfrastructureLibary.Constants;
+using InfrastructureLibary.ETW;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
-using InfrastructureLibary.ETW;
-using InfrastructureLibary.Constants;
-using Prism.Commands;
 
 namespace WpfApp.ViewModels.FlyoutsRegion
 {
