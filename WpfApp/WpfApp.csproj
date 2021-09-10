@@ -12,9 +12,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Models\ModelExcelExport\ModelExcelExport.csproj" />
-    <ProjectReference Include="..\..\Models\ModelExcelFontColor\ModelExcelFontColor.csproj" />
     <ProjectReference Include="..\Infrastructure\InfrastructureLibary\InfrastructureLibary.csproj" />
+    <ProjectReference Include="..\Models\ModelExcelExport\ModelExcelExport.csproj" />
+    <ProjectReference Include="..\Models\ModelExcelFontColor\ModelExcelFontColor.csproj" />
   </ItemGroup>
 
   <ItemGroup>

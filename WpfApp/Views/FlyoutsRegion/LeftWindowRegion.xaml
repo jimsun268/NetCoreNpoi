@@ -16,8 +16,35 @@
     </i:Interaction.Triggers>
     <Button Command="{Binding ApplicationCommands.ShowCommand}" CommandParameter="{x:Static const:FlyoutNames.MainFlout}" >
         <StackPanel Orientation="Horizontal">
+            <Image Height="20" Source="/Assets/left.png" />
+            <TextBlock Text="B" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Button>
+    <Button Command="{Binding ApplicationCommands.ShowCommand}" CommandParameter="{x:Static const:FlyoutNames.EditToolFlout}" Margin="10,0,0,0" >
+        <StackPanel Orientation="Horizontal">
+            <Image Height="20" Source="/Assets/right.png" />
+            <TextBlock  FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Button>
+    <Button Command="{Binding ApplicationCommands.ShowCommand}" CommandParameter="{x:Static const:FlyoutNames.MainFlout}" Margin="10,0,0,0" >
+        <StackPanel Orientation="Horizontal">
             <Image Height="20" Source="/Assets/Home.png" />
-            <TextBlock Text="Main" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
+            <TextBlock  FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Button>
+    <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5,1,5,1"/>
+
+
+    <Button Command="{Binding ApplicationCommands.ShowCommand}" CommandParameter="{x:Static const:FlyoutNames.EditToolFlout}" Margin="10,0,0,0" >
+        <StackPanel Orientation="Horizontal">
+            <Image Height="20" Source="/Assets/Exec.png" />
+            <TextBlock Text="Edit" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
+        </StackPanel>
+    </Button>
+    <Button Command="{Binding ApplicationCommands.ShowCommand}" CommandParameter="{x:Static const:FlyoutNames.MainFlout}" Margin="10,0,0,0" >
+        <StackPanel Orientation="Horizontal">
+            <Image Height="20" Source="/Assets/Home.png" />
+            <TextBlock  FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
         </StackPanel>
     </Button>
     <Button Command="{Binding ApplicationCommands.ShowCommand}" CommandParameter="{x:Static const:FlyoutNames.EditToolFlout}" Margin="10,0,0,0" >
@@ -26,4 +53,5 @@
             <TextBlock Text="Edit" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
         </StackPanel>
     </Button>
+    
 </StackPanel>
