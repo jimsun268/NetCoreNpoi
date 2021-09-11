@@ -50,7 +50,7 @@ namespace WpfApp.ViewModels
             _regionManager.RegisterViewWithRegion(RegionNames.FlyoutRegion, typeof(EditToolFlout));
             
             IRegion region = _regionManager.Regions[RegionNames.MainShowRegion];
-            region.RequestNavigate("FirstPapge", NavigationCompelted);
+            region.RequestNavigate(HelpClass.RegionNames.MainWindow, NavigationCompelted);
 
         }
         private void ModuleManager_LoadModuleCompleted(object sender, LoadModuleCompletedEventArgs e)

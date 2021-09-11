@@ -17,8 +17,4 @@
     <ProjectReference Include="..\Models\ModelExcelFontColor\ModelExcelFontColor.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="HelpClass\" />
-  </ItemGroup>
-
 </Project>

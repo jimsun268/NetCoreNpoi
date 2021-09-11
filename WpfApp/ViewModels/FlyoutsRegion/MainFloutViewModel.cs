@@ -40,7 +40,7 @@ namespace WpfApp.ViewModels.FlyoutsRegion
                     NavigationRegion.NavigationService.Journal.GoBack();
                     break;
                 case "2":
-                    NavigationRegion.RequestNavigate("FirstPapge");
+                    NavigationRegion.RequestNavigate(HelpClass.RegionNames.MainWindow );
                     break;
                 case "3":
                     NavigationRegion.RequestNavigate(ModelExcelFontColor.RegionNames.MainWindow );
