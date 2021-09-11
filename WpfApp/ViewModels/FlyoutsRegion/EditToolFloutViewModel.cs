@@ -1,16 +1,21 @@
 ﻿using InfrastructureLibary.Commands;
+using InfrastructureLibary.ETW;
 using Prism.Mvvm;
 
 namespace WpfApp.ViewModels.FlyoutsRegion
 {
     public class EditToolFloutViewModel : BindableBase
     {
-        public EditToolFloutViewModel( IEditCommands editCommands)
+        public EditToolFloutViewModel( IEditCommands editCommands, IETWService eTWService)
         {
-            EditCommands = editCommands;            
+            EditCommands = editCommands;
+
+            //ETW
+            _etwService.ProcessingStart(nameof(MainWindowViewModel));
         }
 
-        #region Fields       
+        #region Fields      
+        private readonly IETWService _etwService;
         private bool _isCanExcute=true;
         private IEditCommands _editCommands;
         #endregion

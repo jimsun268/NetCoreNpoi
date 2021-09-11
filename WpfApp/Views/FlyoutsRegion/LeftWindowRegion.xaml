@@ -14,20 +14,19 @@
             <i:InvokeCommandAction Command="{Binding ShowSearchLoadingCommand}"/>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Button Command="{Binding ApplicationCommands.ShowCommand}" CommandParameter="{x:Static const:FlyoutNames.MainFlout}" >
-        <StackPanel Orientation="Horizontal">            
-            <TextBlock Text="&lt;" FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
-        </StackPanel>
-    </Button>
-    <Button Command="{Binding ApplicationCommands.ShowCommand}" CommandParameter="{x:Static const:FlyoutNames.EditToolFlout}" Margin="10,0,0,0" >
+    <Button Command="{Binding ButtonCommand}" CommandParameter="1" >
         <StackPanel Orientation="Horizontal">
-            
-            <TextBlock Text=">"  FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
+            <Image Height="20" Source="/Assets/left.png" />            
         </StackPanel>
     </Button>
-    <Button Command="{Binding ApplicationCommands.ShowCommand}" CommandParameter="{x:Static const:FlyoutNames.MainFlout}" Margin="10,0,0,0" >
-        <StackPanel Orientation="Horizontal">            
-            <TextBlock Text="H"  FontWeight="Bold" FontSize="15" VerticalAlignment="Center"/>
+    <Button Command="{Binding ButtonCommand}" CommandParameter="2" Margin="10,0,0,0" >
+        <StackPanel Orientation="Horizontal">
+            <Image Height="20" Source="/Assets/right.png" />
+        </StackPanel>
+    </Button>
+    <Button Command="{Binding ButtonCommand}" CommandParameter="3" Margin="10,0,0,0" >
+        <StackPanel Orientation="Horizontal">
+            <Image Height="20" Source="/Assets/Home.png" />
         </StackPanel>
     </Button>
     <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}" Margin="5,1,5,1"/>

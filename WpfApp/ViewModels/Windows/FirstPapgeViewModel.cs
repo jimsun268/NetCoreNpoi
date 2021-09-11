@@ -18,6 +18,8 @@ namespace WpfApp.ViewModels.Windows
             _regionManager = regionManager;
             _dialogService = dialogService;
             _etwService = eTWService;
+
+            //ETW
             _etwService.ProcessingStart(nameof(FirstPapgeViewModel));
         }
 
@@ -55,8 +57,7 @@ namespace WpfApp.ViewModels.Windows
 
         private void ExecuteButton(string st)
         {            
-            var t1 = _moduleManager.Modules.ToArray();
-            var t2= NavigationRegion.Views.ToArray();
+           
             NavigationRegion.RequestNavigate(ModelExcelExport.RegionNames.MainWindow );           
         }
         public bool IsNavigationTarget(NavigationContext navigationContext)
@@ -66,12 +67,12 @@ namespace WpfApp.ViewModels.Windows
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            _etwService.ProcessInformational(nameof(FirstPapgeViewModel), "OnNavigatedFrom");
+            
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            _etwService.ProcessInformational(nameof(FirstPapgeViewModel), "OnNavigatedTo");
+            
         }
 
         #endregion

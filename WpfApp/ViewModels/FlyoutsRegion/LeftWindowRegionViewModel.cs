@@ -14,10 +14,12 @@ namespace WpfApp.ViewModels.FlyoutsRegion
             this.ApplicationCommands = applicationCommands;
             _regionManager = regionManager;
             _etwService = etwcommands;
+
+            //ETW
+            _etwService.ProcessingStart(nameof(LeftWindowRegionViewModel));
         }
 
         #region Fields
-
         private readonly IRegionManager _regionManager;
         private IApplicationCommands _applicationCommands;
         IRegion _navigationRegion;
@@ -25,14 +27,11 @@ namespace WpfApp.ViewModels.FlyoutsRegion
         #endregion
 
         #region Properties
-        public IRegion NavigationRegion => _navigationRegion ??= _regionManager.Regions[RegionNames.MainShowRegion];
-
-
-
+        public IRegion NavigationRegion => _navigationRegion ??= 
+            _regionManager.Regions[RegionNames.MainShowRegion];
         #endregion
 
         #region Commands
-
         public IApplicationCommands ApplicationCommands
         {
             get { return _applicationCommands; }
@@ -52,10 +51,10 @@ namespace WpfApp.ViewModels.FlyoutsRegion
                     NavigationRegion.NavigationService.Journal.GoBack();
                     break;
                 case "2":
-                    NavigationRegion.NavigationService.Journal.GoForward();                    
+                    NavigationRegion.NavigationService.Journal.GoForward();
                     break;
                 case "3":
-                    NavigationRegion.RequestNavigate(HelpClass.RegionNames.MainWindow);                    
+                    NavigationRegion.RequestNavigate(HelpClass.RegionNames.MainWindow);
                     break;
                 case "4":
                     

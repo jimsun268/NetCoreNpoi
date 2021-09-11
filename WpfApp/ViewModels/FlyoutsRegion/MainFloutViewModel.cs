@@ -12,6 +12,9 @@ namespace WpfApp.ViewModels.FlyoutsRegion
         {
             _regionManager = regionManager;
             _etwService = etwcommands;
+
+            //ETW
+            _etwService.ProcessingStart(nameof(MainFloutViewModel));
         }
 
         #region Fields

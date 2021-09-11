@@ -7,6 +7,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\alter.png" />
+    <None Remove="Assets\Exec.png" />
+    <None Remove="Assets\Home.png" />
+    <None Remove="Assets\left.png" />
+    <None Remove="Assets\right.png" />
+    <None Remove="Assets\success.png" />
+    <None Remove="Assets\按钮.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MahApps.Metro" Version="2.4.7" />
     <PackageReference Include="Prism.Unity" Version="8.1.97" />
   </ItemGroup>
@@ -15,6 +25,30 @@
     <ProjectReference Include="..\Infrastructure\InfrastructureLibary\InfrastructureLibary.csproj" />
     <ProjectReference Include="..\Models\ModelExcelExport\ModelExcelExport.csproj" />
     <ProjectReference Include="..\Models\ModelExcelFontColor\ModelExcelFontColor.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\alter.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Exec.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Home.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\left.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\right.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\success.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\按钮.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

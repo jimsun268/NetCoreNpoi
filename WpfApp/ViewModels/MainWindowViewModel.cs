@@ -17,9 +17,11 @@ namespace WpfApp.ViewModels
             _moduleManager = moduleManager;
             _regionManager = regionManager;
             _dialogService = dialogService;
-            _etwService = eTWService;
+            _etwService = eTWService;            
+            _moduleManager.LoadModuleCompleted += ModuleManager_LoadModuleCompleted;
+
+            //ETW
             _etwService.ProcessingStart(nameof(MainWindowViewModel));
-            _moduleManager.LoadModuleCompleted += ModuleManager_LoadModuleCompleted;            
         }
 
         #region Fields
@@ -56,13 +58,15 @@ namespace WpfApp.ViewModels
         private void ModuleManager_LoadModuleCompleted(object sender, LoadModuleCompletedEventArgs e)
         {
             string name = e.ModuleInfo.ModuleName;
-            _etwService.ProcessInformational(nameof(MainWindowViewModel),"{name} loaded!");
+            _etwService.ProcessInformational(nameof(MainWindowViewModel), name+" loaded!");
         }        
         private void NavigationCompelted(NavigationResult obj)
         {
 
 
         }
+
+        
         #endregion
     }
 }
