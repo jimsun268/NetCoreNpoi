@@ -25,7 +25,7 @@ namespace ModelExcelExport
         {
             //containerRegistry.Register<ILandService, LandService>();
             containerRegistry.RegisterForNavigation<MainWindow>(RegionNames.MainWindow );
-            containerRegistry.Register<IETWService, ETWService>();
+            //containerRegistry.Register<IETWService, ETWService>();
         }
     }
 }

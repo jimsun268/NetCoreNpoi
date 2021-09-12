@@ -56,9 +56,25 @@ namespace WpfApp.ViewModels.Windows
         }
 
         private void ExecuteButton(string st)
-        {            
-           
-            NavigationRegion.RequestNavigate(ModelExcelExport.RegionNames.MainWindow );           
+        {
+            switch (st)
+            {
+                case "1":
+                    NavigationRegion.RequestNavigate(ModelExcelExport.RegionNames.MainWindow);
+                    break;
+                case "2":
+                    NavigationRegion.RequestNavigate(ModelExcelFontColor.RegionNames.MainWindow);
+                    break;
+                case "3":
+                    
+                    break;
+                case "4":
+                    
+                    break;
+                default:
+                    break;
+            }
+
         }
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {

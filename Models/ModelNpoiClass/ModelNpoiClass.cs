@@ -11,12 +11,12 @@ namespace ModelNpoiClass
     {
         public void OnInitialized(IContainerProvider containerProvider)
         {
-            var regionManager = containerProvider.Resolve<IRegionManager>();
+            var regionManager = containerProvider.Resolve<IRegionManager>();            
         }
 
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+            containerRegistry.Register<INpoiService, NpoiService>();
         }
     }
 }

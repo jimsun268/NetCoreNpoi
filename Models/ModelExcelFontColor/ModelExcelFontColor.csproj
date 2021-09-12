@@ -14,11 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\InfrastructureLibary\InfrastructureLibary.csproj" />
+    <ProjectReference Include="..\ModelNpoiClass\ModelNpoiClass.csproj" />
   </ItemGroup>
 
 </Project>

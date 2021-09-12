@@ -9,7 +9,7 @@ namespace WpfApp.ViewModels.FlyoutsRegion
         public EditToolFloutViewModel( IEditCommands editCommands, IETWService eTWService)
         {
             EditCommands = editCommands;
-
+            _etwService = eTWService;
             //ETW
             _etwService.ProcessingStart(nameof(MainWindowViewModel));
         }
