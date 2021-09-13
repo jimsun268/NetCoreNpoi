@@ -53,7 +53,7 @@ namespace WpfApp
         }
         protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
         {
-           
+            moduleCatalog.AddModule<ModelNpoiClass.ModelNpoiClass>();
             moduleCatalog.AddModule<ModelExcelExport.ModelExcelExport>();
             moduleCatalog.AddModule<ModelExcelFontColor.ModelExcelFontColor>();
         }

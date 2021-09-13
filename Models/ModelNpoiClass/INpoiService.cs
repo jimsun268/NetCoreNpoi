@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace ModelNpoiClass
 {
-    public class INpoiService
+    public interface INpoiService
     {
+        public void ShowDialog();
     }
 }

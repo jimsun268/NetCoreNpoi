@@ -25,6 +25,7 @@
     <ProjectReference Include="..\Infrastructure\InfrastructureLibary\InfrastructureLibary.csproj" />
     <ProjectReference Include="..\Models\ModelExcelExport\ModelExcelExport.csproj" />
     <ProjectReference Include="..\Models\ModelExcelFontColor\ModelExcelFontColor.csproj" />
+    <ProjectReference Include="..\Models\ModelNpoiClass\ModelNpoiClass.csproj" />
   </ItemGroup>
 
   <ItemGroup>
