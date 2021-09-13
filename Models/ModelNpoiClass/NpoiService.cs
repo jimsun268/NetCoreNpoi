@@ -3,6 +3,7 @@ using Microsoft.Win32;
 using NPOI.SS.UserModel;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,16 +17,23 @@ namespace ModelNpoiClass
             eTWService.ProcessingStart("ModelNpoiClass");
             _openFile = new OpenFileDialog();
             _openFile.Filter = "XLS (*.xls)|*.xls|XLSX (*.xlsx)|*.xlsx";
+            
         }
 
         #region Fields
+        public static string _tempString;
         private OpenFileDialog _openFile;
         private string _filePathAndName;
         private IWorkbook _workBook;
+        private DataTable _dataTable;
         #endregion
 
         #region Properties
-
+        public string tempName
+        {
+            set { _tempString = value; }
+            get { return _tempString; }
+        }
         public string FileExt
         {
             get

@@ -58,33 +58,51 @@ namespace ModelExcelExport.ViewModels
         #region Excutes
         private void ExecuteLoadingCommand()
         {
-            DelegateCommand01 = new DelegateCommand(Command01);
-            _editCommands.Command01.RegisterCommand(DelegateCommand01);
-            DelegateCommand02 = new DelegateCommand(Command01);
-            _editCommands.Command02.RegisterCommand(DelegateCommand02);
-            DelegateCommand03 = new DelegateCommand(Command01);
-            _editCommands.Command03.RegisterCommand(DelegateCommand03);
-            DelegateCommand04 = new DelegateCommand(Command01);
-            _editCommands.Command04.RegisterCommand(DelegateCommand04);
-            DelegateCommand05 = new DelegateCommand(Command01);
-            _editCommands.Command05.RegisterCommand(DelegateCommand05);
+            
 
         }
         private void ExecuteUnLoadingCommand()
         {
-            _editCommands.Command01.UnregisterCommand(DelegateCommand01);
-            _editCommands.Command02.UnregisterCommand(DelegateCommand02);
-            _editCommands.Command03.UnregisterCommand(DelegateCommand03);
-            _editCommands.Command04.UnregisterCommand(DelegateCommand04);
-            _editCommands.Command05.UnregisterCommand(DelegateCommand05);
+            
 
         }
         public ICommand DelegateCommand01 { get; private set; }
-        public ICommand DelegateCommand02 { get; private set; }
-        public ICommand DelegateCommand03 { get; private set; }
-        public ICommand DelegateCommand04 { get; private set; }
-        public ICommand DelegateCommand05 { get; private set; }
         private void Command01()
+        {
+
+            NpoiService npoi = _npoiService as NpoiService;
+            if (npoi!=null)
+            {
+                npoi.tempName = "ModelExcelExport";
+                string st = "message={" + npoi.tempName + "}";
+                _dialogService.ShowDialog("SuccessDialog", new DialogParameters(st), null);
+            }
+        }
+        public ICommand DelegateCommand02 { get; private set; }
+        private void Command02()
+        {
+            NpoiService npoi = _npoiService as NpoiService;
+            if (npoi != null)
+            {
+                string st = "message={" + npoi.tempName + "}";
+                _dialogService.ShowDialog("SuccessDialog", new DialogParameters(st), null);
+            }
+
+        }
+        public ICommand DelegateCommand03 { get; private set; }
+        private void Command03()
+        {
+
+
+        }
+        public ICommand DelegateCommand04 { get; private set; }
+        private void Command04()
+        {
+
+
+        }
+        public ICommand DelegateCommand05 { get; private set; }
+        private void Command05()
         {
 
 
@@ -101,12 +119,28 @@ namespace ModelExcelExport.ViewModels
 
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            _etwService.ProcessInformational(nameof(MainWindowViewModel), "OnNavigatedFrom");
+
+            _editCommands.Command01.UnregisterCommand(DelegateCommand01);
+            _editCommands.Command02.UnregisterCommand(DelegateCommand02);
+            _editCommands.Command03.UnregisterCommand(DelegateCommand03);
+            _editCommands.Command04.UnregisterCommand(DelegateCommand04);
+            _editCommands.Command05.UnregisterCommand(DelegateCommand05);
+
+            
         }
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            _etwService.ProcessInformational(nameof(MainWindowViewModel), "OnNavigatedTo");
+            DelegateCommand01 = new DelegateCommand(Command01);
+            _editCommands.Command01.RegisterCommand(DelegateCommand01);
+            DelegateCommand02 = new DelegateCommand(Command02);
+            _editCommands.Command02.RegisterCommand(DelegateCommand02);
+            DelegateCommand03 = new DelegateCommand(Command03);
+            _editCommands.Command03.RegisterCommand(DelegateCommand03);
+            DelegateCommand04 = new DelegateCommand(Command04);
+            _editCommands.Command04.RegisterCommand(DelegateCommand04);
+            DelegateCommand05 = new DelegateCommand(Command05);
+            _editCommands.Command05.RegisterCommand(DelegateCommand05);
         }
 
         #endregion
