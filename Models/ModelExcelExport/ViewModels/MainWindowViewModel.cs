@@ -1,5 +1,6 @@
 ﻿using InfrastructureLibary.Commands;
 using InfrastructureLibary.ETW;
+using ModelNpoiClass;
 using Prism.Commands;
 using Prism.Modularity;
 using Prism.Mvvm;
@@ -11,12 +12,13 @@ namespace ModelExcelExport.ViewModels
 {
     public class MainWindowViewModel : BindableBase, INavigationAware, IRegionMemberLifetime
     {
-        public MainWindowViewModel( IRegionManager regionManager, IDialogService dialogService, IETWService eTWService, IEditCommands editCommands)
+        public MainWindowViewModel( IRegionManager regionManager, IDialogService dialogService, IETWService eTWService, IEditCommands editCommands, INpoiService npoiService)
         {            
             _regionManager = regionManager;
             _dialogService = dialogService;
             _etwService = eTWService;
             _editCommands = editCommands;
+            _npoiService = npoiService;
             _etwService.ProcessingStart("ModelExcelExport "+nameof(MainWindowViewModel));
         }
 
@@ -28,6 +30,7 @@ namespace ModelExcelExport.ViewModels
         private readonly IETWService _etwService;
         private IRegion _navigationRegion;
         private IEditCommands _editCommands;
+        private INpoiService _npoiService;
         #endregion
 
         #region Properties

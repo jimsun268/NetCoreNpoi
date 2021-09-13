@@ -51,6 +51,7 @@ namespace WpfApp.ViewModels.Windows
         #region Excutes
         private void ExecuteLoadingCommand()
         {
+           
             
 
         }
@@ -66,7 +67,7 @@ namespace WpfApp.ViewModels.Windows
                     NavigationRegion.RequestNavigate(ModelExcelFontColor.RegionNames.MainWindow);
                     break;
                 case "3":
-                    
+                    string s1 = _moduleManager.Modules.Count().ToString();
                     break;
                 case "4":
                     
