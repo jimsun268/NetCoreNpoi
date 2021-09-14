@@ -21,19 +21,16 @@ namespace ModelNpoiClass
         }
 
         #region Fields
-        public static string _tempString;
+        private static DataSet _dataSet;
         private OpenFileDialog _openFile;
         private string _filePathAndName;
         private IWorkbook _workBook;
         private DataTable _dataTable;
+
         #endregion
 
         #region Properties
-        public string tempName
-        {
-            set { _tempString = value; }
-            get { return _tempString; }
-        }
+        public DataSet DataSet => _dataSet ??= new DataSet();
         public string FileExt
         {
             get
