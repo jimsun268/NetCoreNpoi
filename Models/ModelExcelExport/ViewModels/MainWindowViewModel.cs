@@ -31,11 +31,19 @@ namespace ModelExcelExport.ViewModels
         private IRegion _navigationRegion;
         private IEditCommands _editCommands;
         private NpoiService _npoiService;
+
+       
         #endregion
 
         #region Properties
         public bool KeepAlive => true;
         public IRegion NavigationRegion => _navigationRegion ??= _regionManager.Regions[InfrastructureLibary.Constants.RegionNames.MainShowRegion];
+
+        public string[] SheetList
+        {
+            get { return _npoiService.Sheets; }
+            set { RaisePropertyChanged();    }
+        }
         #endregion
 
         #region Commands
@@ -74,8 +82,8 @@ namespace ModelExcelExport.ViewModels
         public ICommand DelegateCommand02 { get; private set; }
         private void Command02()
         {
+            var temp=_npoiService.Sheets;
             
-
         }
         public ICommand DelegateCommand03 { get; private set; }
         private void Command03()
@@ -98,7 +106,24 @@ namespace ModelExcelExport.ViewModels
 
         private void ExecuteButton(string st)
         {
-
+            switch (st)
+            {
+                case "1":
+                    _npoiService.ShowDialog();
+                    SheetList = _npoiService.Sheets;
+                    break;
+                case "2":
+                    
+                    break;
+                case "3":
+                    
+                    break;
+                case "4":
+                    
+                    break;
+                default:
+                    break;
+            }
         }
         public bool IsNavigationTarget(NavigationContext navigationContext)
         {

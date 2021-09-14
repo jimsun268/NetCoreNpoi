@@ -22,14 +22,15 @@ namespace ModelNpoiClass
         }
 
         #region Fields
-        private static DataSet _dataSet;
-        private OpenFileDialog _openFile;
-        private FileInfo _fileInfo;
         private IETWService _eTWService;
         private IDialogService _dialogService;
 
-        private string _filePathAndName;
+              
+        private FileInfo _fileInfo;              
         private IWorkbook _workBook;
+        private List<string> _sheets;
+
+        private static DataSet _dataSet;
         #endregion
 
         #region Properties
@@ -38,52 +39,61 @@ namespace ModelNpoiClass
         {
             get
             {
-                if (string.IsNullOrEmpty(_filePathAndName)) GetFile();
-                return _filePathAndName.Split(".").Last();
+                if (_fileInfo == null) GetFile();
+                return _fileInfo.Extension;
             }
         }
         public string FileName
         {
             get
             {
-                if (string.IsNullOrEmpty(_filePathAndName)) GetFile();
-                return _filePathAndName.Split(@"\").Last().Split(".").First();
+                if (_fileInfo == null) GetFile();
+                return _fileInfo.Name;
             }
         }
         public string FilePath
         {
             get
             {
-                if (string.IsNullOrEmpty(_filePathAndName)) GetFile();
-                int indx = FileName.Length + FileExt.Length + 1;
-                return _filePathAndName.Remove(_filePathAndName.Length - indx, indx);
+                if (_fileInfo == null) GetFile();
+                return _fileInfo.DirectoryName;
             }
         }
+
+        public string[] Sheets
+        {
+            get
+            {
+                if (_workBook == null) return null;
+                if (_sheets == null) GetSheets();
+                return _sheets.ToArray();
+            }
+        }
+      
         #endregion
 
         #region private Methods
         private void GetFile()
         {
-            if(_openFile ==null)
-            {
-                _openFile = new OpenFileDialog();
-                _openFile.Filter = "XLS (*.xls)|*.xls|XLSX (*.xlsx)|*.xlsx";
-            }
+
+            OpenFileDialog _openFile = new OpenFileDialog();                
+            _openFile.Filter = "XLS (*.xls)|*.xls|XLSX (*.xlsx)|*.xlsx";
+           
             if (_openFile.ShowDialog() == true)
             {
                 _fileInfo = new FileInfo(_openFile.FileName);
                if (_fileInfo.Extension== ".xls" || _fileInfo.Extension == ".xlsx")
                 {
-                    _workBook = WorkbookFactory.Create(_fileInfo.OpenRead());
-                    if (_workBook != null)
+                    try
                     {
-                        List<string> vs = new List<string>();
-                        for (int i = 0; i < _workBook.NumberOfSheets; i++)
-                        {
-                            vs.Add(_workBook.GetSheetAt(i).SheetName);
-                        }
-                        _dialogService.ShowDialog("WarningDialog", new DialogParameters($"message=oper surrect {vs.Count.ToString ()}"), null);
+                        _workBook = WorkbookFactory.Create(_fileInfo.OpenRead());
+                        Recover();
+                        _dialogService.ShowDialog("SuccessDialog", new DialogParameters($"message= {"成功打开"}{this.FileName}"), null);
                     }
+                    catch (Exception ex)
+                    {
+                        _dialogService.ShowDialog("WarningDialog", new DialogParameters($"message={"打开文件错误！"}{ex.Message}"), null);
+                    }                   
                 }
                 else
                 {
@@ -91,6 +101,23 @@ namespace ModelNpoiClass
                 }
             }
 
+        }
+
+        private void GetSheets()
+        {
+            if(_workBook !=null)
+            {
+                _sheets = new List<string>();
+                for (int i = 0; i < _workBook.NumberOfSheets; i++)
+                {
+                    _sheets.Add(_workBook.GetSheetAt(i).SheetName);
+                }
+            }            
+        }
+
+        private void Recover()
+        {
+            _sheets = null;
         }
         #endregion
 
