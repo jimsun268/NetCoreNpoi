@@ -18,7 +18,7 @@ namespace ModelExcelExport.ViewModels
             _dialogService = dialogService;
             _etwService = eTWService;
             _editCommands = editCommands;
-            _npoiService = npoiService;
+            _npoiService = npoiService as NpoiService;
             _etwService.ProcessingStart("ModelExcelExport "+nameof(MainWindowViewModel));
         }
 
@@ -30,7 +30,7 @@ namespace ModelExcelExport.ViewModels
         private readonly IETWService _etwService;
         private IRegion _navigationRegion;
         private IEditCommands _editCommands;
-        private INpoiService _npoiService;
+        private NpoiService _npoiService;
         #endregion
 
         #region Properties
@@ -69,8 +69,7 @@ namespace ModelExcelExport.ViewModels
         public ICommand DelegateCommand01 { get; private set; }
         private void Command01()
         {
-
-            
+            _npoiService.ShowDialog();
         }
         public ICommand DelegateCommand02 { get; private set; }
         private void Command02()

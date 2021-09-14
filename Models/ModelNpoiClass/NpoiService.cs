@@ -1,9 +1,11 @@
 ﻿using InfrastructureLibary.ETW;
 using Microsoft.Win32;
 using NPOI.SS.UserModel;
+using Prism.Services.Dialogs;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,21 +14,22 @@ namespace ModelNpoiClass
 {
     public class NpoiService : INpoiService
     {
-        public NpoiService (IETWService eTWService)
+        public NpoiService (IETWService eTWService, IDialogService dialogService)
         {
-            eTWService.ProcessingStart("ModelNpoiClass");
-            _openFile = new OpenFileDialog();
-            _openFile.Filter = "XLS (*.xls)|*.xls|XLSX (*.xlsx)|*.xlsx";
-            
+            _eTWService = eTWService;
+            _dialogService = dialogService;
+            _eTWService.ProcessingStart("ModelNpoiClass.NpoiService");
         }
 
         #region Fields
         private static DataSet _dataSet;
         private OpenFileDialog _openFile;
+        private FileInfo _fileInfo;
+        private IETWService _eTWService;
+        private IDialogService _dialogService;
+
         private string _filePathAndName;
         private IWorkbook _workBook;
-        
-
         #endregion
 
         #region Properties
@@ -61,9 +64,31 @@ namespace ModelNpoiClass
         #region private Methods
         private void GetFile()
         {
+            if(_openFile ==null)
+            {
+                _openFile = new OpenFileDialog();
+                _openFile.Filter = "XLS (*.xls)|*.xls|XLSX (*.xlsx)|*.xlsx";
+            }
             if (_openFile.ShowDialog() == true)
             {
-                _filePathAndName = _openFile.FileName;                
+                _fileInfo = new FileInfo(_openFile.FileName);
+               if (_fileInfo.Extension== ".xls" || _fileInfo.Extension == ".xlsx")
+                {
+                    _workBook = WorkbookFactory.Create(_fileInfo.OpenRead());
+                    if (_workBook != null)
+                    {
+                        List<string> vs = new List<string>();
+                        for (int i = 0; i < _workBook.NumberOfSheets; i++)
+                        {
+                            vs.Add(_workBook.GetSheetAt(i).SheetName);
+                        }
+                        _dialogService.ShowDialog("WarningDialog", new DialogParameters($"message=oper surrect {vs.Count.ToString ()}"), null);
+                    }
+                }
+                else
+                {
+                    _dialogService.ShowDialog("WarningDialog", new DialogParameters($"message={"请选择EXCEL文件"}"), null);
+                }
             }
 
         }
