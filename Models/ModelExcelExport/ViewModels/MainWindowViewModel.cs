@@ -70,23 +70,12 @@ namespace ModelExcelExport.ViewModels
         private void Command01()
         {
 
-            NpoiService npoi = _npoiService as NpoiService;
-            if (npoi!=null)
-            {
-                npoi.tempName = "ModelExcelExport";
-                string st = "message={" + npoi.tempName + "}";
-                _dialogService.ShowDialog("SuccessDialog", new DialogParameters(st), null);
-            }
+            
         }
         public ICommand DelegateCommand02 { get; private set; }
         private void Command02()
         {
-            NpoiService npoi = _npoiService as NpoiService;
-            if (npoi != null)
-            {
-                string st = "message={" + npoi.tempName + "}";
-                _dialogService.ShowDialog("SuccessDialog", new DialogParameters(st), null);
-            }
+            
 
         }
         public ICommand DelegateCommand03 { get; private set; }
