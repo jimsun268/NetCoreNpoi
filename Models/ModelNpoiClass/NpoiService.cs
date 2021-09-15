@@ -102,7 +102,6 @@ namespace ModelNpoiClass
             }
 
         }
-
         private void GetSheets()
         {
             if(_workBook !=null)
@@ -112,9 +111,8 @@ namespace ModelNpoiClass
                 {
                     _sheets.Add(_workBook.GetSheetAt(i).SheetName);
                 }
-            }            
+            }
         }
-
         private void Recover()
         {
             _sheets = null;
