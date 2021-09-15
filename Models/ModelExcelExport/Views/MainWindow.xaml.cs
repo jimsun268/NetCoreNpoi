@@ -22,7 +22,7 @@ namespace ModelExcelExport.Views
     {
         public MainWindow()
         {
-            InitializeComponent();
+            InitializeComponent();            
         }
        
     }

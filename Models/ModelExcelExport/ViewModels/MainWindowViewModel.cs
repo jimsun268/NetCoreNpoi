@@ -77,12 +77,12 @@ namespace ModelExcelExport.ViewModels
         public ICommand DelegateCommand01 { get; private set; }
         private void Command01()
         {
-            _npoiService.ShowDialog();
+            
         }
         public ICommand DelegateCommand02 { get; private set; }
         private void Command02()
         {
-            var temp=_npoiService.Sheets;
+          
             
         }
         public ICommand DelegateCommand03 { get; private set; }
